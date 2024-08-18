@@ -8,3 +8,13 @@ git clone https://github.com/NataliPochekutova/my_first_project.git
 2. Установите зависимости:
 ```
 pip install -r requirements.txt
+```
+## Тестирование
+Для проекта реализованы юнит-тесты на pytest. Запустить можно командой `pytest .`
+Покрытие:
+```
+src/masks.py ........ 100%
+src/widget.py ....... 100%
+src/processing.py.....100%
+total                 100%
+```

@@ -1,0 +1,534 @@
+[33mcommit bde6e62c5579b927c88bb20a3ca2be25a74a81dc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Natalia Pochekutova <natalipochekutova51@gmail.com>
+Date:   Tue Aug 6 22:46:57 2024 +0800
+
+    masks
+
+[1mdiff --git a/.flake8 b/.flake8[m
+[1mnew file mode 100644[m
+[1mindex 0000000..4a86941[m
+[1m--- /dev/null[m
+[1m+++ b/.flake8[m
+[36m@@ -0,0 +1,3 @@[m
+[32m+[m[32m[flake8][m
+[32m+[m[32mmax-line-length = 119[m
+[32m+[m[32mexclude = .git, __pycache__[m
+\ No newline at end of file[m
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mnew file mode 100644[m
+[1mindex 0000000..56bf8f4[m
+[1m--- /dev/null[m
+[1m+++ b/.gitignore[m
+[36m@@ -0,0 +1,162 @@[m
+[32m+[m[32m# Byte-compiled / optimized / DLL files[m
+[32m+[m[32m__pycache__/[m
+[32m+[m[32m*.py[cod][m
+[32m+[m[32m*$py.class[m
+[32m+[m
+[32m+[m[32m# C extensions[m
+[32m+[m[32m*.so[m
+[32m+[m
+[32m+[m[32m# Distribution / packaging[m
+[32m+[m[32m.Python[m
+[32m+[m[32mbuild/[m
+[32m+[m[32mdevelop-eggs/[m
+[32m+[m[32mdist/[m
+[32m+[m[32mdownloads/[m
+[32m+[m[32meggs/[m
+[32m+[m[32m.eggs/[m
+[32m+[m[32mlib/[m
+[32m+[m[32mlib64/[m
+[32m+[m[32mparts/[m
+[32m+[m[32msdist/[m
+[32m+[m[32mvar/[m
+[32m+[m[32mwheels/[m
+[32m+[m[32mshare/python-wheels/[m
+[32m+[m[32m*.egg-info/[m
+[32m+[m[32m.installed.cfg[m
+[32m+[m[32m*.egg[m
+[32m+[m[32mMANIFEST[m
+[32m+[m
+[32m+[m[32m# PyInstaller[m
+[32m+[m[32m#  Usually these files are written by a python script from a template[m
+[32m+[m[32m#  before PyInstaller builds the exe, so as to inject date/other infos into it.[m
+[32m+[m[32m*.manifest[m
+[32m+[m[32m*.spec[m
+[32m+[m
+[32m+[m[32m# Installer logs[m
+[32m+[m[32mpip-log.txt[m
+[32m+[m[32mpip-delete-this-directory.txt[m
+[32m+[m
+[32m+[m[32m# Unit test / coverage reports[m
+[32m+[m[32mhtmlcov/[m
+[32m+[m[32m.tox/[m
+[32m+[m[32m.nox/[m
+[32m+[m[32m.coverage[m
+[32m+[m[32m.coverage.*[m
+[32m+[m[32m.cache[m
+[32m+[m[32mnosetests.xml[m
+[32m+[m[32mcoverage.xml[m
+[32m+[m[32m*.cover[m
+[32m+[m[32m*.py,cover[m
+[32m+[m[32m.hypothesis/[m
+[32m+[m[32m.pytest_cache/[m
+[32m+[m[32mcover/[m
+[32m+[m
+[32m+[m[32m# Translations[m
+[32m+[m[32m*.mo[m
+[32m+[m[32m*.pot[m
+[32m+[m
+[32m+[m[32m# Django stuff:[m
+[32m+[m[32m*.log[m
+[32m+[m[32mlocal_settings.py[m
+[32m+[m[32mdb.sqlite3[m
+[32m+[m[32mdb.sqlite3-journal[m
+[32m+[m
+[32m+[m[32m# Flask stuff:[m
+[32m+[m[32minstance/[m
+[32m+[m[32m.webassets-cache[m
+[32m+[m
+[32m+[m[32m# Scrapy stuff:[m
+[32m+[m[32m.scrapy[m
+[32m+[m
+[32m+[m[32m# Sphinx documentation[m
+[32m+[m[32mdocs/_build/[m
+[32m+[m
+[32m+[m[32m# PyBuilder[m
+[32m+[m[32m.pybuilder/[m
+[32m+[m[32mtarget/[m
+[32m+[m
+[32m+[m[32m# Jupyter Notebook[m
+[32m+[m[32m.ipynb_checkpoints[m
+[32m+[m
+[32m+[m[32m# IPython[m
+[32m+[m[32mprofile_default/[m
+[32m+[m[32mipython_config.py[m
+[32m+[m
+[32m+[m[32m# pyenv[m
+[32m+[m[32m#   For a library or package, you might want to ignore these files since the code is[m
+[32m+[m[32m#   intended to run in multiple environments; otherwise, check them in:[m
+[32m+[m[32m# .python-version[m
+[32m+[m
+[32m+[m[32m# pipenv[m
+[32m+[m[32m#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.[m
+[32m+[m[32m#   However, in case of collaboration, if having platform-specific dependencies or dependencies[m
+[32m+[m[32m#   having no cross-platform support, pipenv may install dependencies that don't work, or not[m
+[32m+[m[32m#   install all needed dependencies.[m
+[32m+[m[32m#Pipfile.lock[m
+[32m+[m
+[32m+[m[32m# poetry[m
+[32m+[m[32m#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.[m
+[32m+[m[32m#   This is especially recommended for binary packages to ensure reproducibility, and is more[m
+[32m+[m[32m#   commonly ignored for libraries.[m
+[32m+[m[32m#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control[m
+[32m+[m[32m#poetry.lock[m
+[32m+[m
+[32m+[m[32m# pdm[m
+[32m+[m[32m#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.[m
+[32m+[m[32m#pdm.lock[m
+[32m+[m[32m#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it[m
+[32m+[m[32m#   in version control.[m
+[32m+[m[32m#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control[m
+[32m+[m[32m.pdm.toml[m
+[32m+[m[32m.pdm-python[m
+[32m+[m[32m.pdm-build/[m
+[32m+[m
+[32m+[m[32m# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm[m
+[32m+[m[32m__pypackages__/[m
+[32m+[m
+[32m+[m[32m# Celery stuff[m
+[32m+[m[32mcelerybeat-schedule[m
+[32m+[m[32mcelerybeat.pid[m
+[32m+[m
+[32m+[m[32m# SageMath parsed files[m
+[32m+[m[32m*.sage.py[m
+[32m+[m
+[32m+[m[32m# Environments[m
+[32m+[m[32m.env[m
+[32m+[m[32m.venv[m
+[32m+[m[32menv/[m
+[32m+[m[32mvenv/[m
+[32m+[m[32mENV/[m
+[32m+[m[32menv.bak/[m
+[32m+[m[32mvenv.bak/[m
+[32m+[m
+[32m+[m[32m# Spyder project settings[m
+[32m+[m[32m.spyderproject[m
+[32m+[m[32m.spyproject[m
+[32m+[m
+[32m+[m[32m# Rope project settings[m
+[32m+[m[32m.ropeproject[m
+[32m+[m
+[32m+[m[32m# mkdocs documentation[m
+[32m+[m[32m/site[m
+[32m+[m
+[32m+[m[32m# mypy[m
+[32m+[m[32m.mypy_cache/[m
+[32m+[m[32m.dmypy.json[m
+[32m+[m[32mdmypy.json[m
+[32m+[m
+[32m+[m[32m# Pyre type checker[m
+[32m+[m[32m.pyre/[m
+[32m+[m
+[32m+[m[32m# pytype static type analyzer[m
+[32m+[m[32m.pytype/[m
+[32m+[m
+[32m+[m[32m# Cython debug symbols[m
+[32m+[m[32mcython_debug/[m
+[32m+[m
+[32m+[m[32m# PyCharm[m
+[32m+[m[32m#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can[m
+[32m+[m[32m#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore[m
+[32m+[m[32m#  and can be added to the global gitignore or merged into this file.  For a more nuclear[m
+[32m+[m[32m#  option (not recommended) you can uncomment the following to ignore the entire idea folder.[m
+[32m+[m[32m.idea/[m
+\ No newline at end of file[m
+[1mdiff --git a/poetry.lock b/poetry.lock[m
+[1mnew file mode 100644[m
+[1mindex 0000000..4d36f0c[m
+[1m--- /dev/null[m
+[1m+++ b/poetry.lock[m
+[36m@@ -0,0 +1,244 @@[m
+[32m+[m[32m# This file is automatically @generated by Poetry 1.8.3 and should not be changed by hand.[m
+[32m+[m
+[32m+[m[32m[[package]][m
+[32m+[m[32mname = "black"[m
+[32m+[m[32mversion = "24.8.0"[m
+[32m+[m[32mdescription = "The uncompromising code formatter."[m
+[32m+[m[32moptional = false[m
+[32m+[m[32mpython-versions = ">=3.8"[m
+[32m+[m[32mfiles = [[m
+[32m+[m[32m    {file = "black-24.8.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:09cdeb74d494ec023ded657f7092ba518e8cf78fa8386155e4a03fdcc44679e6"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:81c6742da39f33b08e791da38410f32e27d632260e599df7245cccee2064afeb"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:707a1ca89221bc8a1a64fb5e15ef39cd755633daa672a9db7498d1c19de66a42"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp310-cp310-win_amd64.whl", hash = "sha256:d6417535d99c37cee4091a2f24eb2b6d5ec42b144d50f1f2e436d9fe1916fe1a"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:fb6e2c0b86bbd43dee042e48059c9ad7830abd5c94b0bc518c0eeec57c3eddc1"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:837fd281f1908d0076844bc2b801ad2d369c78c45cf800cad7b61686051041af"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:62e8730977f0b77998029da7971fa896ceefa2c4c4933fcd593fa599ecbf97a4"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp311-cp311-win_amd64.whl", hash = "sha256:72901b4913cbac8972ad911dc4098d5753704d1f3c56e44ae8dce99eecb0e3af"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:7c046c1d1eeb7aea9335da62472481d3bbf3fd986e093cffd35f4385c94ae368"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:649f6d84ccbae73ab767e206772cc2d7a393a001070a4c814a546afd0d423aed"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:2b59b250fdba5f9a9cd9d0ece6e6d993d91ce877d121d161e4698af3eb9c1018"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp312-cp312-win_amd64.whl", hash = "sha256:6e55d30d44bed36593c3163b9bc63bf58b3b30e4611e4d88a0c3c239930ed5b2"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:505289f17ceda596658ae81b61ebbe2d9b25aa78067035184ed0a9d855d18afd"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:b19c9ad992c7883ad84c9b22aaa73562a16b819c1d8db7a1a1a49fb7ec13c7d2"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:1f13f7f386f86f8121d76599114bb8c17b69d962137fc70efe56137727c7047e"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp38-cp38-win_amd64.whl", hash = "sha256:f490dbd59680d809ca31efdae20e634f3fae27fba3ce0ba3208333b713bc3920"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:eab4dd44ce80dea27dc69db40dab62d4ca96112f87996bca68cd75639aeb2e4c"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:3c4285573d4897a7610054af5a890bde7c65cb466040c5f0c8b732812d7f0e5e"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:9e84e33b37be070ba135176c123ae52a51f82306def9f7d063ee302ecab2cf47"},[m
+[32m+[m[32m    {file = "black-24.8.0-cp39-cp39-win_amd64.whl", hash = "sha256:73bbf84ed136e45d451a260c6b73ed674652f90a2b3211d6a35e78054563a9bb"},[m
+[32m+[m[32m    {file = "black-24.8.0-py3-none-any.whl", hash = "sha256:972085c618ee94f402da1af548a4f218c754ea7e5dc70acb168bfaca4c2542ed"},[m
+[32m+[m[32m    {file = "black-24.8.0.tar.gz", hash = "sha256:2500945420b6784c38b9ee885af039f5e7471ef284ab03fa35ecdde4688cd83f"},[m
+[32m+[m[32m][m
+[32m+[m
+[32m+[m[32m[package.dependencies][m
+[32m+[m[32mclick = ">=8.0.0"[m
+[32m+[m[32mmypy-extensions = ">=0.4.3"[m
+[32m+[m[32mpackaging = ">=22.0"[m
+[32m+[m[32mpathspec = ">=0.9.0"[m
+[32m+[m[32mplatformdirs = ">=2"[m
+[32m+[m
+[32m+[m[32m[package.extras][m
+[32m+[m[32mcolorama = ["colorama (>=0.4.3)"][m
+[32m+[m[32md = ["aiohttp (>=3.7.4)", "aiohttp (>=3.7.4,!=3.9.0)"][m
+[32m+[m[32mjupyter = ["ipython (>=7.8.0)", "tokenize-rt (>=3.2.0)"][m
+[32m+[m[32muvloop = ["uvloop (>=0.15.2)"][m
+[32m+[m
+[32m+[m[32m[[package]][m
+[32m+[m[32mname = "click"[m
+[32m+[m[32mversion = "8.1.7"[m
+[32m+[m[32mdescription = "Composable command line interface toolkit"[m
+[32m+[m[32moptional = false[m
+[32m+[m[32mpython-versions = ">=3.7"[m
+[32m+[m[32mfiles = [[m
+[32m+[m[32m    {file = "click-8.1.7-py3-none-any.whl", hash = "sha256:ae74fb96c20a0277a1d615f1e4d73c8414f5a98db8b799a7931d1582f3390c28"},[m
+[32m+[m[32m    {file = "click-8.1.7.tar.gz", hash = "sha256:ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de"},[m
+[32m+[m[32m][m
+[32m+[m
+[32m+[m[32m[package.dependencies][m
+[32m+[m[32mcolorama = {version = "*", markers = "platform_system == \"Windows\""}[m
+[32m+[m
+[32m+[m[32m[[package]][m
+[32m+[m[32mname = "colorama"[m
+[32m+[m[32mversion = "0.4.6"[m
+[32m+[m[32mdescription = "Cross-platform colored terminal text."[m
+[32m+[m[32moptional = false[m
+[32m+[m[32mpython-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"[m
+[32m+[m[32mfiles = [[m
+[32m+[m[32m    {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},[m
+[32m+[m[32m    {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},[m
+[32m+[m[32m][m
+[32m+[m
+[32m+[m[32m[[package]][m
+[32m+[m[32mname = "flake8"[m
+[32m+[m[32mversion = "7.1.0"[m
+[32m+[m[32mdescription = "the modular source code checker: pep8 pyflakes and co"[m
+[32m+[m[32moptional = false[m
+[32m+[m[32mpython-versions = ">=3.8.1"[m
+[32m+[m[32mfiles = [[m
+[32m+[m[32m    {file = "flake8-7.1.0-py2.py3-none-any.whl", hash = "sha256:2e416edcc62471a64cea09353f4e7bdba32aeb079b6e360554c659a122b1bc6a"},[m
+[32m+[m[32m    {file = "flake8-7.1.0.tar.gz", hash = "sha256:48a07b626b55236e0fb4784ee69a465fbf59d79eec1f5b4785c3d3bc57d17aa5"},[m
+[32m+[m[32m][m
+[32m+[m
+[32m+[m[32m[package.dependencies][m
+[32m+[m[32mmccabe = ">=0.7.0,<0.8.0"[m
+[32m+[m[32mpycodestyle = ">=2.12.0,<2.13.0"[m
+[32m+[m[32mpyflakes = ">=3.2.0,<3.3.0"[m
+[32m+[m
+[32m+[m[32m[[package]][m
+[32m+[m[32mname = "isort"[m
+[32m+[m[32mversion = "5.13.2"[m
+[32m+[m[32mdescription = "A Python utility / library to sort Python imports."[m
+[32m+[m[32moptional = false[m
+[32m+[m[32mpython-versions = ">=3.8.0"[m
+[32m+[m[32mfiles = [[m
+[32m+[m[32m    {file = "isort-5.13.2-py3-none-any.whl", hash = "sha256:8ca5e72a8d85860d5a3fa69b8745237f2939afe12dbf656afbcb47fe72d947a6"},[m
+[32m+[m[32m    {file = "isort-5.13.2.tar.gz", hash = "sha256:48fdfcb9face5d58a4f6dde2e72a1fb8dcaf8ab26f95ab49fab84c2ddefb0109"},[m
+[32m+[m[32m][m
+[32m+[m
+[32m+[m[32m[package.extras][m
+[32m+[m[32mcolors = ["colorama (>=0.4.6)"][m
+[32m+[m
+[32m+[m[32m[[package]][m
+[32m+[m[32mname = "mccabe"[m
+[32m+[m[32mversion = "0.7.0"[m
+[32m+[m[32mdescription = "McCabe checker, plugin for flake8"[m
+[32m+[m[32moptional = false[m
+[32m+[m[32mpython-versions = ">=3.6"[m
+[32m+[m[32mfiles = [[m
+[32m+[m[32m    {file = "mccabe-0.7.0-py2.py3-none-any.whl", hash = "sha256:6c2d30ab6be0e4a46919781807b4f0d834ebdd6c6e3dca0bda5a15f863427b6e"},[m
+[32m+[m[32m    {file = "mccabe-0.7.0.tar.gz", hash = "sha256:348e0240c33b60bbdf4e523192ef919f28cb2c3d7d5c7794f74009290f236325"},[m
+[32m+[m[32m][m
+[32m+[m
+[32m+[m[32m[[package]][m
+[32m+[m[32mname = "mypy"[m
+[32m+[m[32mversion = "1.11.1"[m
+[32m+[m[32mdescription = "Optional static typing for Python"[m
+[32m+[m[32moptional = false[m
+[32m+[m[32mpython-versions = ">=3.8"[m
+[32m+[m[32mfiles = [[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:a32fc80b63de4b5b3e65f4be82b4cfa362a46702672aa6a0f443b4689af7008c"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:c1952f5ea8a5a959b05ed5f16452fddadbaae48b5d39235ab4c3fc444d5fd411"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:e1e30dc3bfa4e157e53c1d17a0dad20f89dc433393e7702b813c10e200843b03"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:2c63350af88f43a66d3dfeeeb8d77af34a4f07d760b9eb3a8697f0386c7590b4"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp310-cp310-win_amd64.whl", hash = "sha256:a831671bad47186603872a3abc19634f3011d7f83b083762c942442d51c58d58"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:7b6343d338390bb946d449677726edf60102a1c96079b4f002dedff375953fc5"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:e4fe9f4e5e521b458d8feb52547f4bade7ef8c93238dfb5bbc790d9ff2d770ca"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:886c9dbecc87b9516eff294541bf7f3655722bf22bb898ee06985cd7269898de"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp311-cp311-musllinux_1_1_x86_64.whl", hash = "sha256:fca4a60e1dd9fd0193ae0067eaeeb962f2d79e0d9f0f66223a0682f26ffcc809"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp311-cp311-win_amd64.whl", hash = "sha256:0bd53faf56de9643336aeea1c925012837432b5faf1701ccca7fde70166ccf72"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:f39918a50f74dc5969807dcfaecafa804fa7f90c9d60506835036cc1bc891dc8"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:0bc71d1fb27a428139dd78621953effe0d208aed9857cb08d002280b0422003a"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:b868d3bcff720dd7217c383474008ddabaf048fad8d78ed948bb4b624870a417"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp312-cp312-musllinux_1_1_x86_64.whl", hash = "sha256:a707ec1527ffcdd1c784d0924bf5cb15cd7f22683b919668a04d2b9c34549d2e"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp312-cp312-win_amd64.whl", hash = "sha256:64f4a90e3ea07f590c5bcf9029035cf0efeae5ba8be511a8caada1a4893f5525"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:749fd3213916f1751fff995fccf20c6195cae941dc968f3aaadf9bb4e430e5a2"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:b639dce63a0b19085213ec5fdd8cffd1d81988f47a2dec7100e93564f3e8fb3b"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:4c956b49c5d865394d62941b109728c5c596a415e9c5b2be663dd26a1ff07bc0"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp38-cp38-musllinux_1_1_x86_64.whl", hash = "sha256:45df906e8b6804ef4b666af29a87ad9f5921aad091c79cc38e12198e220beabd"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp38-cp38-win_amd64.whl", hash = "sha256:d44be7551689d9d47b7abc27c71257adfdb53f03880841a5db15ddb22dc63edb"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:2684d3f693073ab89d76da8e3921883019ea8a3ec20fa5d8ecca6a2db4c54bbe"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:79c07eb282cb457473add5052b63925e5cc97dfab9812ee65a7c7ab5e3cb551c"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:11965c2f571ded6239977b14deebd3f4c3abd9a92398712d6da3a772974fad69"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:a2b43895a0f8154df6519706d9bca8280cda52d3d9d1514b2d9c3e26792a0b74"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-cp39-cp39-win_amd64.whl", hash = "sha256:1a81cf05975fd61aec5ae16501a091cfb9f605dc3e3c878c0da32f250b74760b"},[m
+[32m+[m[32m    {file = "mypy-1.11.1-py3-none-any.whl", hash = "sha256:0624bdb940255d2dd24e829d99a13cfeb72e4e9031f9492148f410ed30bcab54"},[m
+[32m+[m[32m    {file = "mypy-1.11.1.tar.gz", hash = "sha256:f404a0b069709f18bbdb702eb3dcfe51910602995de00bd39cea3050b5772d08"},[m
+[32m+[m[32m][m
+[32m+[m
+[32m+[m[32m[package.dependencies][m
+[32m+[m[32mmypy-extensions = ">=1.0.0"[m
+[32m+[m[32mtyping-extensions = ">=4.6.0"[m
+[32m+[m
+[32m+[m[32m[package.extras][m
+[32m+[m[32mdmypy = ["psutil (>=4.0)"][m
+[32m+[m[32minstall-types = ["pip"][m
+[32m+[m[32mmypyc = ["setuptools (>=50)"][m
+[32m+[m[32mreports = ["lxml"][m
+[32m+[m
+[32m+[m[32m[[package]][m
+[32m+[m[32mname = "mypy-extensions"[m
+[32m+[m[32mversion = "1.0.0"[m
+[32m+[m[32mdescription = "Type system extensions for programs checked with the mypy type checker."[m
+[32m+[m[32moptional = false[m
+[32m+[m[32mpython-versions = ">=3.5"[m
+[32m+[m[32mfiles = [[m
+[32m+[m[32m    {file = "mypy_extensions-1.0.0-py3-none-any.whl", hash = "sha256:4392f6c0eb8a5668a69e23d168ffa70f0be9ccfd32b5cc2d26a34ae5b844552d"},[m
+[32m+[m[32m    {file = "mypy_extensions-1.0.0.tar.gz", hash = "sha256:75dbf8955dc00442a438fc4d0666508a9a97b6bd41aa2f0ffe9d2f2725af0782"},[m
+[32m+[m[32m][m
+[32m+[m
+[32m+[m[32m[[package]][m
+[32m+[m[32mname = "packaging"[m
+[32m+[m[32mversion = "24.1"[m
+[32m+[m[32mdescription = "Core utilities for Python packages"[m
+[32m+[m[32moptional = false[m
+[32m+[m[32mpython-versions = ">=3.8"[m
+[32m+[m[32mfiles = [[m
+[32m+[m[32m    {file = "packaging-24.1-py3-none-any.whl", hash = "sha256:5b8f2217dbdbd2f7f384c41c628544e6d52f2d0f53c6d0c3ea61aa5d1d7ff124"},[m
+[32m+[m[32m    {file = "packaging-24.1.tar.gz", hash = "sha256:026ed72c8ed3fcce5bf8950572258698927fd1dbda10a5e981cdf0ac37f4f002"},[m
+[32m+[m[32m][m
+[32m+[m
+[32m+[m[32m[[package]][m
+[32m+[m[32mname = "pathspec"[m
+[32m+[m[32mversion = "0.12.1"[m
+[32m+[m[32mdescription = "Utility library for gitignore style pattern matching of file paths."[m
+[32m+[m[32moptional = false[m
+[32m+[m[32mpython-versions = ">=3.8"[m
+[32m+[m[32mfiles = [[m
+[32m+[m[32m    {file = "pathspec-0.12.1-py3-none-any.whl", hash = "sha256:a0d503e138a4c123b27490a4f7beda6a01c6f288df0e4a8b79c7eb0dc7b4cc08"},[m
+[32m+[m[32m    {file = "pathspec-0.12.1.tar.gz", hash = "sha256:a482d51503a1ab33b1c67a6c3813a26953dbdc71c31dacaef9a838c4e29f5712"},[m
+[32m+[m[32m][m
+[32m+[m
+[32m+[m[32m[[package]][m
+[32m+[m[32mname = "platformdirs"[m
+[32m+[m[32mversion = "4.2.2"[m
+[32m+[m[32mdescription = "A small Python package for determining appropriate platform-specific dirs, e.g. a `user data dir`."[m
+[32m+[m[32moptional = false[m
+[32m+[m[32mpython-versions = ">=3.8"[m
+[32m+[m[32mfiles = [[m
+[32m+[m[32m    {file = "platformdirs-4.2.2-py3-none-any.whl", hash = "sha256:2d7a1657e36a80ea911db832a8a6ece5ee53d8de21edd5cc5879af6530b1bfee"},[m
+[32m+[m[32m    {file = "platformdirs-4.2.2.tar.gz", hash = "sha256:38b7b51f512eed9e84a22788b4bce1de17c0adb134d6becb09836e37d8654cd3"},[m
+[32m+[m[32m][m
+[32m+[m
+[32m+[m[32m[package.extras][m
+[32m+[m[32mdocs = ["furo (>=2023.9.10)", "proselint (>=0.13)", "sphinx (>=7.2.6)", "sphinx-autodoc-typehints (>=1.25.2)"][m
+[32m+[m[32mtest = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest (>=7.4.3)", "pytest-cov (>=4.1)", "pytest-mock (>=3.12)"][m
+[32m+[m[32mtype = ["mypy (>=1.8)"][m
+[32m+[m
+[32m+[m[32m[[package]][m
+[32m+[m[32mname = "pycodestyle"[m
+[32m+[m[32mversion = "2.12.0"[m
+[32m+[m[32mdescription = "Python style guide checker"[m
+[32m+[m[32moptional = false[m
+[32m+[m[32mpython-versions = ">=3.8"[m
+[32m+[m[32mfiles = [[m
+[32m+[m[32m    {file = "pycodestyle-2.12.0-py2.py3-none-any.whl", hash = "sha256:949a39f6b86c3e1515ba1787c2022131d165a8ad271b11370a8819aa070269e4"},[m
+[32m+[m[32m    {file = "pycodestyle-2.12.0.tar.gz", hash = "sha256:442f950141b4f43df752dd303511ffded3a04c2b6fb7f65980574f0c31e6e79c"},[m
+[32m+[m[32m][m
+[32m+[m
+[32m+[m[32m[[package]][m
+[32m+[m[32mname = "pyflakes"[m
+[32m+[m[32mversion = "3.2.0"[m
+[32m+[m[32mdescription = "passive checker of Python programs"[m
+[32m+[m[32moptional = false[m
+[32m+[m[32mpython-versions = ">=3.8"[m
+[32m+[m[32mfiles = [[m
+[32m+[m[32m    {file = "pyflakes-3.2.0-py2.py3-none-any.whl", hash = "sha256:84b5be138a2dfbb40689ca07e2152deb896a65c3a3e24c251c5c62489568074a"},[m
+[32m+[m[32m    {file = "pyflakes-3.2.0.tar.gz", hash = "sha256:1c61603ff154621fb2a9172037d84dca3500def8c8b630657d1701f026f8af3f"},[m
+[32m+[m[32m][m
+[32m+[m
+[32m+[m[32m[[package]][m
+[32m+[m[32mname = "typing-extensions"[m
+[32m+[m[32mversion = "4.12.2"[m
+[32m+[m[32mdescription = "Backported and Experimental Type Hints for Python 3.8+"[m
+[32m+[m[32moptional = false[m
+[32m+[m[32mpython-versions = ">=3.8"[m
+[32m+[m[32mfiles = [[m
+[32m+[m[32m    {file = "typing_extensions-4.12.2-py3-none-any.whl", hash = "sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d"},[m
+[32m+[m[32m    {file = "typing_extensions-4.12.2.tar.gz", hash = "sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"},[m
+[32m+[m[32m][m
+[32m+[m
+[32m+[m[32m[metadata][m
+[32m+[m[32mlock-version = "2.0"[m
+[32m+[m[32mpython-versions = "^3.12"[m
+[32m+[m[32mcontent-hash = "063947d525b297f36a5f92935aa2ac22cf371a0dd3b104498661706a80adca3d"[m
+[1mdiff --git a/pyproject.toml b/pyproject.toml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..6ff7e67[m
+[1m--- /dev/null[m
+[1m+++ b/pyproject.toml[m
+[36m@@ -0,0 +1,34 @@[m
+[32m+[m[32m[tool.poetry][m
+[32m+[m[32mname = "pythonproject"[m
+[32m+[m[32mversion = "0.1.0"[m
+[32m+[m[32mdescription = ""[m
+[32m+[m[32mauthors = ["Your Name <you@example.com>"][m
+[32m+[m[32mreadme = "README.md"[m
+[32m+[m
+[32m+[m[32m[tool.poetry.dependencies][m
+[32m+[m[32mpython = "^3.12"[m
+[32m+[m
+[32m+[m
+[32m+[m[32m[tool.poetry.group.lint.dependencies][m
+[32m+[m[32mflake8 = "^7.1.0"[m
+[32m+[m[32mblack = "^24.8.0"[m
+[32m+[m[32misort = "^5.13.2"[m
+[32m+[m[32mmypy = "^1.11.1"[m
+[32m+[m
+[32m+[m[32m[build-system][m
+[32m+[m[32mrequires = ["poetry-core"][m
+[32m+[m[32mbuild-backend = "poetry.core.masonry.api"[m
+[32m+[m
+[32m+[m[32m[tool.black][m
+[32m+[m[32mline-length = 119[m
+[32m+[m[32mexclude = """.git"""[m
+[32m+[m
+[32m+[m[32m[tool.isort][m
+[32m+[m[32mline_length = 119[m
+[32m+[m
+[32m+[m[32m[tool.mypy][m
+[32m+[m[32mdisallow_untyped_defs = true[m
+[32m+[m[32mno_implicit_optional = true[m
+[32m+[m[32mwarn_return_any = true[m
+[32m+[m[32mcheck_untyped_defs = true[m
+[32m+[m[32mexclude = 'venv'[m
+\ No newline at end of file[m
+[1mdiff --git a/src/__init__.py b/src/__init__.py[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e69de29[m
+[1mdiff --git a/src/masks.py b/src/masks.py[m
+[1mnew file mode 100644[m
+[1mindex 0000000..1db2310[m
+[1m--- /dev/null[m
+[1m+++ b/src/masks.py[m
+[36m@@ -0,0 +1,18 @@[m
+[32m+[m[32mdef get_mask_card_number(card_number: str) -> str:[m
+[32m+[m[32m    """Функция маскировки номера карты"""[m
+[32m+[m[32m    if card_number.isdigit() and len(card_number) == 16:[m
+[32m+[m[32m        return f"{card_number[0: 4]} {card_number[4: 6]}{"*" * 2} {"*" * 4} {card_number[-4:]}"[m
+[32m+[m[32m    else:[m
+[32m+[m[32m        return "Неверные данные"[m
+[32m+[m
+[32m+[m
+[32m+[m[32mdef get_mask_account(account_number: str) -> str:[m
+[32m+[m[32m    """Функция маскировки номера счета"""[m
+[32m+[m[32m    if account_number.isdigit() and len(account_number) == 20:[m
+[32m+[m[32m        return f"{"*" * 2}{account_number[-4::]}"[m
+[32m+[m[32m    else:[m
+[32m+[m[32m        return "Неверные данные"[m
+[32m+[m
+[32m+[m
+[32m+[m[32mprint(get_mask_card_number("2204528462589512"))[m
+[32m+[m[32mprint(get_mask_account("47896523789654258942"))[m
+[1mdiff --git a/tatusgit status b/tatusgit status[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e7e9ca5[m
+[1m--- /dev/null[m
+[1m+++ b/tatusgit status[m	
+[36m@@ -0,0 +1,22 @@[m
+[32m+[m[32mdiff.astextplain.textconv=astextplain[m
+[32m+[m[32mfilter.lfs.clean=git-lfs clean -- %f[m
+[32m+[m[32mfilter.lfs.smudge=git-lfs smudge -- %f[m
+[32m+[m[32mfilter.lfs.process=git-lfs filter-process[m
+[32m+[m[32mfilter.lfs.required=true[m
+[32m+[m[32mhttp.sslbackend=openssl[m
+[32m+[m[32mhttp.sslcainfo=C:/Program Files/Git/mingw64/etc/ssl/certs/ca-bundle.crt[m
+[32m+[m[32mcore.autocrlf=true[m
+[32m+[m[32mcore.fscache=true[m
+[32m+[m[32mcore.symlinks=false[m
+[32m+[m[32mpull.rebase=false[m
+[32m+[m[32mcredential.helper=manager[m
+[32m+[m[32mcredential.https://dev.azure.com.usehttppath=true[m
+[32m+[m[32minit.defaultbranch=main[m
+[32m+[m[32muser.name=Natalia Pochekutova[m
+[32m+[m[32muser.email=natalipochekutova51@gmail.com[m
+[32m+[m[32mcore.repositoryformatversion=0[m
+[32m+[m[32mcore.filemode=false[m
+[32m+[m[32mcore.bare=false[m
+[32m+[m[32mcore.logallrefupdates=true[m
+[32m+[m[32mcore.symlinks=false[m
+[32m+[m[32mcore.ignorecase=true[m
+[1mdiff --git a/tests/__init__.py b/tests/__init__.py[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e69de29[m
