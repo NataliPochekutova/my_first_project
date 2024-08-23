@@ -17,5 +17,6 @@ src/masks.py ........ 100%
 src/widget.py ....... 100%
 src/processing.py.....100%
 src/generators.py.....100%
+src/decorators.py.....100%
 total                 100%
 ```
