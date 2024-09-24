@@ -1,7 +1,5 @@
 import os
 
-from unittest.mock import patch
-
 import pytest
 
 from src.utils import get_financial_transactions
@@ -9,20 +7,20 @@ from src.utils import get_financial_transactions
 
 @pytest.fixture
 def path():
-    PATH_TO_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "operations.json")
-    return PATH_TO_FILE
+    path_to_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "operations.json")
+    return path_to_file
 
 
 @pytest.fixture
 def path_empty_list():
-    PATH_TO_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "operations_1.json")
-    return PATH_TO_FILE
+    path_to_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "operations_1.json")
+    return path_to_file
 
 
 @pytest.fixture
 def path_mistake_json():
-    PATH_TO_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "operations_2.json")
-    return PATH_TO_FILE
+    path_to_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "operations_2.json")
+    return path_to_file
 
 
 @pytest.fixture
@@ -67,5 +65,3 @@ def test_financial_transactions_empty_list(path_empty_list):
 
 def test_financial_transactions_mistake_json(path_mistake_json):
     assert get_financial_transactions(path_mistake_json) == []
-
-
