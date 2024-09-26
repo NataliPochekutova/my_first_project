@@ -18,5 +18,7 @@ src/widget.py ....... 100%
 src/processing.py.....100%
 src/generators.py.....100%
 src/decorators.py.....100%
-total                 100%
+src/utils.py..........83%
+src/external_api.py...93%
+total                 98%
 ```
