@@ -18,19 +18,22 @@ pip install -r requirements.txt
 - Функция генерации счетов
 - Функция принятия информацй с помощью JSON-файла
 - Функция принятия значение в "USD", "EUR" обращение через API и возвращение в рублиях
+- Функция считывает csv-файл и возвращает список словарей
+- Функция считывает excel-файл и возвращает список словарей
 
 ## Тестирование
 Для проекта реализованы юнит-тесты на pytest. Запустить можно командой `pytest .`
 Покрытие:
 ```
-src/masks.py ........ 100%
-src/widget.py ....... 100%
-src/processing.py.....100%
-src/generators.py.....100%
-src/decorators.py.....100%
-src/utils.py..........83%
-src/external_api.py...93%
-total                 98%
+src/masks.py ................. 100%
+src/widget.py ................ 100%
+src/processing.py..............100%
+src/generators.py..............100%
+src/decorators.py..............100%
+src/utils.py....................83%
+src/external_api.py.............93%
+src/financial_transactions.py..100%
+total                           98%
 ```
 ## Логирование
 1. Файлы логов записываются в папку logs
