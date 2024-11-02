@@ -5,7 +5,11 @@ def filter_by_currency(transactions_list: Any, currency: str) -> Any:
     """Функция, возвращающая итератор, где валюта операции соответствует заданной"""
     if len(transactions_list) > 0:
         filtered_transactions = filter(
-            lambda transactions_list: transactions_list.get("operationAmount").get("currency").get("code") == currency,
+            lambda transaction: (
+                    transaction.get("operationAmount") is not None and
+                    transaction["operationAmount"].get("currency") is not None and
+                    transaction["operationAmount"]["currency"].get("code") == currency
+            ),
             transactions_list,
         )
         return filtered_transactions
