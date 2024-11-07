@@ -17,8 +17,3 @@ def mask_account_card(card_details: str) -> str:
 def get_date(user_date: str) -> str:
     """Функция для преобразования даты"""
     return f"{user_date[8:10]}.{user_date[5:7]}.{user_date[0:4]}"
-
-
-print(mask_account_card("Maestro 1596837868705199"))
-print(mask_account_card("Счет 35383033474447895560"))
-print(get_date("2024-03-11T02:26:18.671407"))
